@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.homeFragment, R.id.formFragment )
+                R.id.homeFragment, R.id.formFragment ,R.id.action_formFragment_to_homeFragment, R.id.action_homeFragment_to_formFragment)
                 .build();
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         navController = navHostFragment.getNavController();
@@ -39,4 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void closeFragment() {
+        navController.navigateUp();
+    }
 }

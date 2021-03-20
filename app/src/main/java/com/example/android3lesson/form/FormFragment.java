@@ -5,7 +5,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +16,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.android3lesson.R;
+import com.example.android3lesson.ui.MainActivity;
+
+import static android.content.ContentValues.TAG;
 
 public class FormFragment extends Fragment {
 
@@ -36,24 +42,26 @@ public class FormFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        init(view);
-
-
-    }
-
-    private void init(View view) {
         editText1 = view.findViewById(R.id.editText1);
         editText2 = view.findViewById(R.id.editText2);
         button = view.findViewById(R.id.sendbtn);
+        init(view);
+    }
+
+    private void init(View view) {
 
         button.setOnClickListener(v -> {
             String text1 = editText1.getText().toString();
             String text2 = editText2.getText().toString();
-
             Bundle bundle = new Bundle();
-            bundle.putString("text1",text1);
-            bundle.putString("text2", text2);
-            getParentFragmentManager().setFragmentResult("rk_text",bundle);
+            bundle.putSerializable("text1", text1);
+            bundle.putSerializable("text2", text2);
+           getParentFragmentManager().setFragmentResult("rk_text", bundle);
+            ((MainActivity) requireActivity()).closeFragment();
+            Log.d("TAG", "init: "+bundle);
+
         });
+
     }
+
 }
