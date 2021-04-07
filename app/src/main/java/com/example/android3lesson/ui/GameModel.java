@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class GameModel implements Serializable {
-    private String   first;
-    private String second;
+    private Object   first;
+    private Object second;
     private boolean knopka=true;
 
-    public GameModel(String first, String second) {
+    public GameModel(Object first, Object  second) {
         this.first = first;
         this.second = second;
     }
@@ -37,4 +37,5 @@ public class GameModel implements Serializable {
     public void setKnopka(boolean knopka) {
         this.knopka = knopka;
     }
+
 }

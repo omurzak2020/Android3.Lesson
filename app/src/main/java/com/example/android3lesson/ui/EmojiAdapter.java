@@ -12,20 +12,20 @@ import com.example.android3lesson.R;
 import com.example.android3lesson.data.Card;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 public class EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.EmojiHolder> {
 
     private final Listener listener;
     private ArrayList<GameModel> list = new ArrayList<>();
-    //private HomeFragment game;
-    //private final Game<String> game;
 
     public EmojiAdapter(ArrayList<GameModel> list, Listener listener) {
         this.list = list;
         this.listener = listener;
         notifyDataSetChanged();
     }
+
+
 
     @NonNull
     @Override
@@ -48,9 +48,20 @@ public class EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.EmojiHolder>
     }
 
 
-    public void addList(GameModel model ) {
-            list.add( model);
+    public void addList(ArrayList<GameModel> model, Object text2) {
+            list.addAll( 0,model);
+//            this.list.addAll(0, (Collection<? extends GameModel>) text2);
             notifyDataSetChanged();
+    }
+
+    public void addItem(GameModel model) {
+           // list.add(model);
+            //notifyDataSetChanged();
+    }
+
+    public void addList(GameModel azamzhon) {
+        list.add(azamzhon);
+        notifyDataSetChanged();
     }
 
 

@@ -11,37 +11,28 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.android3lesson.R;
 import com.example.android3lesson.data.Card;
-import com.example.android3lesson.data.Game;
 import com.example.android3lesson.ui.EmogiGame;
 import com.example.android3lesson.ui.EmojiAdapter;
 import com.example.android3lesson.ui.GameModel;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
 
 public class HomeFragment extends Fragment implements EmojiAdapter.Listener {
 
     private EmojiAdapter adapter;
     private RecyclerView recyclerView;
     private EmogiGame game;
-    Game<String> gGame;
-    private GameModel model;
 
     ArrayList<GameModel> list;
-    private List card;
 
-    private String  text1;
-    private String  text2;
+    private Object  text1;
+    private Object  text2;
 
 
     @Override
@@ -63,26 +54,13 @@ public class HomeFragment extends Fragment implements EmojiAdapter.Listener {
         getParentFragmentManager().setFragmentResultListener("rk_text", getViewLifecycleOwner(), new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                text1 = (String) result.getSerializable("text");
-                text2 = (String) result.getSerializable("textt");
+                text1 = (Object) result.getSerializable("text");
+                text2 = (Object) result.getSerializable("textt");
 
-             /*   adapter.addList((GameModel) new GameModel(text1,text2));
-                adapter.addList(text1);*/
             }
         });
 
-        game = new EmogiGame();
-        list = new ArrayList<>();
-
-        adapter = new EmojiAdapter(list, this);
-        adapter.addList((GameModel) new GameModel("Ruslan", "Nazar"));
-        adapter.addList((GameModel) new GameModel("Azamzhon", "Chyngyz"));
-        adapter.addList((GameModel) new GameModel(text1,text2));
-
-        //  Log.d("TAG", "init: "+text1+ text2);
-        //  adapter.addList((GameModel) new GameModel());
-        recyclerView.setAdapter(adapter);
-
+        addList();
 
         recyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
         view.findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
@@ -92,6 +70,18 @@ public class HomeFragment extends Fragment implements EmojiAdapter.Listener {
                 navController.navigate(R.id.formFragment);
             }
         });
+    }
+
+    private void addList() {
+        //game = new EmogiGame();
+        list = new ArrayList<>();
+
+        adapter = new EmojiAdapter(list, this);
+        adapter.addList((GameModel) new GameModel("Ruslan", "Nazar"));
+        adapter.addList((GameModel) new GameModel("Azamzhon", " Chyngyz"));
+       // adapter.addList((ArrayList<GameModel>) text1,text2);
+        recyclerView.setAdapter(adapter);
+
     }
 
     private void init() {
