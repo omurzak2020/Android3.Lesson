@@ -19,7 +19,7 @@ public class EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.EmojiHolder>
     private final Listener listener;
     private ArrayList<GameModel> list = new ArrayList<>();
     //private HomeFragment game;
-//    private final Game<String> game;
+    //private final Game<String> game;
 
     public EmojiAdapter(ArrayList<GameModel> list, Listener listener) {
         this.list = list;
@@ -48,16 +48,10 @@ public class EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.EmojiHolder>
     }
 
 
-    public void addList(GameModel model) {
+    public void addList(GameModel model ) {
             list.add( model);
             notifyDataSetChanged();
     }
-
- /*   public void addList(GameModel text1, GameModel text2) {
-        list.add( text1);
-        list.add( text2);
-        notifyDataSetChanged();
-    }*/
 
 
     class EmojiHolder extends RecyclerView.ViewHolder {
@@ -74,9 +68,9 @@ public class EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.EmojiHolder>
 
         public void bind(GameModel model) {
             if (model.isKnopka())
-                tvCard.setText(model.getFirst());
+                tvCard.setText((CharSequence) model.getFirst());
             else
-                tvCard.setText(model.getSecond());
+                tvCard.setText((CharSequence) model.getSecond());
             model.setKnopka(!model.isKnopka());
         }
 

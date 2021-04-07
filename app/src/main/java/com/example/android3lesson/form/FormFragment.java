@@ -54,11 +54,11 @@ public class FormFragment extends Fragment {
             String text1 = editText1.getText().toString();
             String text2 = editText2.getText().toString();
             Bundle bundle = new Bundle();
-            bundle.putSerializable("text1", text1);
-            bundle.putSerializable("text2", text2);
+            bundle.putSerializable("text", text1);
+            bundle.putSerializable("textt", text2);
            getParentFragmentManager().setFragmentResult("rk_text", bundle);
             ((MainActivity) requireActivity()).closeFragment();
-            Log.d("TAG", "init: "+bundle);
+//            Log.d("TAG", "init: "+bundle);
 
         });
 

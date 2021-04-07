@@ -34,7 +34,7 @@ public class Card<CardContent> {
         return Content;
     }
 
-    public void setContent(CardContent content) {
+    public void setContent(CardContent content)  {
         Content = content;
     }
 

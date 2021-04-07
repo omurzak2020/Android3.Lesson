@@ -1,9 +1,10 @@
 package com.example.android3lesson.ui;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class GameModel implements Serializable {
-    private String first;
+    private String   first;
     private String second;
     private boolean knopka=true;
 
@@ -12,19 +13,20 @@ public class GameModel implements Serializable {
         this.second = second;
     }
 
-    public String getFirst() {
+
+    public Object getFirst() {
         return first;
     }
 
-    public void setFirst(String first) {
+    public void setFirst(String  first) {
         this.first = first;
     }
 
-    public String getSecond() {
+    public Object  getSecond() {
         return second;
     }
 
-    public void setSecond(String second) {
+    public void setSecond(String  second) {
         this.second = second;
     }
 
